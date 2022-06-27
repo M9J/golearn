@@ -1,0 +1,20 @@
+name: Actions
+on: [push]
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup node
+        uses: actions/setup-go@v3
+        with:
+          go-version: "1.18.3"
+
+      - name: Run version
+        run: go version
+
+      - name: Run tests
+        run: go test golearn/...
